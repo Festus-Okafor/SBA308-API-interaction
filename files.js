@@ -1,7 +1,7 @@
 
     let image = document.querySelector("#image")
-    let name = document.querySelector("name")
-    let description = document.querySelector("description")
+    let wifeName = document.querySelector("#name")
+    let wifeDescription = document.querySelector("#description")
     let btn = document.querySelector("#btn")
  
     btn.addEventListener("click",()=>{
@@ -24,11 +24,17 @@ fetch(apiUrl, { headers })
   .then(data => {
     console.log(data)
    let imgWife  = data.images[0].url
-    data.images[0].width = null
-      
-   console.log(imgWife)
-     
+   let name = data.images[0].tags[0].name
+   let description = data.images[0].tags[0].description
+   console.log(description)
+    data.images[0].width = 150
+
    image.src = imgWife
+   console.log(imgWife)
+   wifeName.textContent = name
+   console.log(wifeName)
+   wifeDescription.textContent = description
+   console.log(wifeDescription)
 
   })
    .catch(error => {
