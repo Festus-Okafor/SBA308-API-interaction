@@ -1,5 +1,6 @@
 
-
+ import {twerkit} from './powerpuff.js'
+ export  {apiUrl}
     let image = document.querySelector("#image")
     let wifeName = document.querySelector("#name")
     let wifeDescription = document.querySelector("#description")
@@ -10,7 +11,7 @@
     btn.addEventListener("click",()=>{
         location.reload();
     })
-    },500);
+  
 
 const apiUrl = 'https://api.waifu.im/search';
 
@@ -23,7 +24,9 @@ fetch(apiUrl, { headers })
       return response.json();
    
     } else {
+      setTimeout(function(){
       throw new Error('Request failed with status code: ' + response.status);
+      }, 2000);
     }
   
   })
@@ -54,3 +57,4 @@ fetch(apiUrl, { headers })
 
 
   },2000);
+  twerkit()
